@@ -1,0 +1,15 @@
+/home/nico/portfolio/advent23/advent23/AdventOfCode/bin/Debug/net7.0/AdventOfCode
+/home/nico/portfolio/advent23/advent23/AdventOfCode/bin/Debug/net7.0/AdventOfCode.deps.json
+/home/nico/portfolio/advent23/advent23/AdventOfCode/bin/Debug/net7.0/AdventOfCode.runtimeconfig.json
+/home/nico/portfolio/advent23/advent23/AdventOfCode/bin/Debug/net7.0/AdventOfCode.dll
+/home/nico/portfolio/advent23/advent23/AdventOfCode/bin/Debug/net7.0/AdventOfCode.pdb
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/AdventOfCode.csproj.AssemblyReference.cache
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/AdventOfCode.GeneratedMSBuildEditorConfig.editorconfig
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/AdventOfCode.AssemblyInfoInputs.cache
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/AdventOfCode.AssemblyInfo.cs
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/AdventOfCode.csproj.CoreCompileInputs.cache
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/AdventOfCode.dll
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/refint/AdventOfCode.dll
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/AdventOfCode.pdb
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/AdventOfCode.genruntimeconfig.cache
+/home/nico/portfolio/advent23/advent23/AdventOfCode/obj/Debug/net7.0/ref/AdventOfCode.dll
