@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-string[] calibrations = {"tsgbzmgbonethreedrqzbhxjkvcnm3",
+"tsgbzmgbonethreedrqzbhxjkvcnm3",
 "7qlpsnhbmnconeeight78",
 "prbqsfzqn57,",
 "ctrv3hmvjphrffktwothree",
@@ -999,39 +997,4 @@ string[] calibrations = {"tsgbzmgbonethreedrqzbhxjkvcnm3",
 "gqrnpz5sth",
 "xcsmcfour3eightts",
 "eight691seven8cxdbveightzv",
-"onenjhcd9"};
-
-string digits = @"\d+";
-string[] calibrated = new string[calibrations.Length];
-var i = 0;
-foreach (string value in calibrations)
-{
-    string condensed = "";
-    foreach (Match match in Regex.Matches(value, digits))
-    {
-        condensed += match;
-    }
-
-    calibrated[i] = condensed;
-    i++;
-
-};
-
-int totalCalibration = 0;
-foreach (string nums in calibrated)
-{
-    if (nums.Length == 1)
-    {
-        string fullNum = nums + nums;
-        totalCalibration += int.Parse(fullNum);
-
-    }
-    else
-    {
-        int finalSpot = nums.Length - 1;
-        var splitDigits = $"{nums[0]}{nums[finalSpot]}";
-        totalCalibration += int.Parse(splitDigits);
-    };
-
-}
-Console.WriteLine(totalCalibration);
+"onenjhcd9"
