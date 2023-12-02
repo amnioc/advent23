@@ -1,6 +1,16 @@
 ﻿using System.Text.RegularExpressions;
 
-string[] calibrations = {"tsgbzmgbonethreedrqzbhxjkvcnm3",
+// string[] calibrations = {"two1nine",
+// "eightwothree",
+// "abcone2threexyz",
+// "xtwone3four",
+// "4nineeightseven2",
+// "zoneight234",   
+// "7pqrstsixteen"};
+
+string[] calibrations =
+{
+"tsgbzmgbonethreedrqzbhxjkvcnm3",
 "7qlpsnhbmnconeeight78",
 "prbqsfzqn57,",
 "ctrv3hmvjphrffktwothree",
@@ -1002,19 +1012,41 @@ string[] calibrations = {"tsgbzmgbonethreedrqzbhxjkvcnm3",
 "onenjhcd9"};
 
 string digits = @"\d+";
+string digitWords = @"((one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine))";
 string[] calibrated = new string[calibrations.Length];
 var i = 0;
+var convertor = new Dictionary<string, string>()
+    {
+        {"one", "o1e"},
+        {"two", "t2o"},
+        {"three", "thr3e"},
+        {"four", "4"},
+        {"five", "fi5e"},
+        {"six", "6"},
+        {"seven", "se7en"},
+        {"eight", "eig8t"},
+        {"nine", "ni9e"}
+
+    };
+
 foreach (string value in calibrations)
 {
-    string condensed = "";
-    foreach (Match match in Regex.Matches(value, digits))
+    string replaced = value;
+    foreach (Match match in Regex.Matches(value, digitWords))
     {
-        condensed += match;
+        foreach (var entry in convertor)
+        {
+            replaced = Regex.Replace(replaced, entry.Key, entry.Value);
+        }
     }
 
-    calibrated[i] = condensed;
+    string justNums = "";
+    foreach (Match match in Regex.Matches(replaced, digits))
+    {
+        justNums += match;
+    }
+    calibrated[i] = justNums;
     i++;
-
 };
 
 int totalCalibration = 0;
@@ -1024,7 +1056,6 @@ foreach (string nums in calibrated)
     {
         string fullNum = nums + nums;
         totalCalibration += int.Parse(fullNum);
-
     }
     else
     {
@@ -1034,4 +1065,9 @@ foreach (string nums in calibrated)
     };
 
 }
-Console.WriteLine(totalCalibration);
+Console.WriteLine(totalCalibration); // 5502 - correct answer!! (day 1 puzzle 1)
+//55093 - (day 1 puzzle 2)
+
+
+
+
