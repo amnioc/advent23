@@ -1072,9 +1072,10 @@ foreach (string nums in calibrated)
 
 ///////////////////DAY TWO PUZZLE ONE 
 
-StreamReader reader = new StreamReader("dayTwoTest.csv");
+StreamReader reader = new StreamReader("dayTwopuzzOne.csv");
 string currentLine;
 int possible = 0;
+int powerTotal = 0;
 while ((currentLine = reader.ReadLine()) != null)
 {
     var gameTitle = currentLine.Split(":")[0].Trim(new Char[] { ' ', 'G', 'a', 'm', 'e' });
@@ -1089,10 +1090,18 @@ while ((currentLine = reader.ReadLine()) != null)
     var redMatch = Regex.Matches(gameInfo, redBlocks);
     var greenMatch = Regex.Matches(gameInfo, greenBlocks);
     var blueMatch = Regex.Matches(gameInfo, blueBlocks);
+    int biggestRed = 0;
+    int biggestGreen = 0;
+    int biggestBlue = 0;
 
     foreach (Match red in redMatch)
     {
-        if (int.Parse(red.Value) > 12)
+        int redValue = int.Parse(red.Value);
+        if (redValue > biggestRed)
+        {
+            biggestRed = redValue;
+        }
+        if (redValue > 12)
         {
             impossible += 1;
             continue;
@@ -1103,7 +1112,12 @@ while ((currentLine = reader.ReadLine()) != null)
 
     foreach (Match green in greenMatch)
     {
-        if (int.Parse(green.Value) > 13)
+        int greenValue = int.Parse(green.Value);
+        if (greenValue > biggestGreen)
+        {
+            biggestGreen = greenValue;
+        }
+        if (greenValue > 13)
         {
             impossible += 1;
             continue;
@@ -1112,7 +1126,12 @@ while ((currentLine = reader.ReadLine()) != null)
 
     foreach (Match blue in blueMatch)
     {
-        if (int.Parse(blue.Value) > 14)
+        int blueValue = int.Parse(blue.Value);
+        if (blueValue > biggestBlue)
+        {
+            biggestBlue = blueValue;
+        }
+        if (blueValue > 14)
         {
             impossible += 1;
             continue;
@@ -1123,6 +1142,9 @@ while ((currentLine = reader.ReadLine()) != null)
     {
         possible += gameNumber;
     }
-
+    int powerSum = biggestRed * biggestBlue * biggestGreen;
+    powerTotal += powerSum;
 }
-Console.WriteLine(possible);
+// Console.WriteLine(possible); Correct! 1205 //day2puzz1
+Console.WriteLine(powerTotal);
+
