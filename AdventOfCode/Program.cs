@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 // string[] calibrations = {"two1nine",
 // "eightwothree",
@@ -1065,9 +1066,63 @@ foreach (string nums in calibrated)
     };
 
 }
-Console.WriteLine(totalCalibration); // 5502 - correct answer!! (day 1 puzzle 1)
+// Console.WriteLine(totalCalibration); // 5502 - correct answer!! (day 1 puzzle 1)
 //55093 - (day 1 puzzle 2)
 
 
+///////////////////DAY TWO PUZZLE ONE 
+
+StreamReader reader = new StreamReader("dayTwoTest.csv");
+string currentLine;
+int possible = 0;
+while ((currentLine = reader.ReadLine()) != null)
+{
+    var gameTitle = currentLine.Split(":")[0].Trim(new Char[] { ' ', 'G', 'a', 'm', 'e' });
+    int gameNumber = int.Parse(gameTitle);
+
+    var gameInfo = currentLine.Split(":")[1];
+
+    string redBlocks = @"(\d+)(?= red)";
+    string greenBlocks = @"(\d+)(?= green)";
+    string blueBlocks = @"(\d+)(?= blue)";
+    int impossible = 0;
+    var redMatch = Regex.Matches(gameInfo, redBlocks);
+    var greenMatch = Regex.Matches(gameInfo, greenBlocks);
+    var blueMatch = Regex.Matches(gameInfo, blueBlocks);
+
+    foreach (Match red in redMatch)
+    {
+        if (int.Parse(red.Value) > 12)
+        {
+            impossible += 1;
+            continue;
+        }
+
+    }
 
 
+    foreach (Match green in greenMatch)
+    {
+        if (int.Parse(green.Value) > 13)
+        {
+            impossible += 1;
+            continue;
+        }
+    }
+
+    foreach (Match blue in blueMatch)
+    {
+        if (int.Parse(blue.Value) > 14)
+        {
+            impossible += 1;
+            continue;
+        }
+
+    }
+    if (impossible == 0)
+    {
+        possible += gameNumber;
+    }
+
+}
+Console.WriteLine(possible);
